@@ -19,3 +19,7 @@ class Comment(models.Model):
     likes = models.IntegerField()
     diskikes = models.IntegerField()
 
+class Reply(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment= models.ForeignKey(max_length=255)
+    text = models.CharField(max_length=255)

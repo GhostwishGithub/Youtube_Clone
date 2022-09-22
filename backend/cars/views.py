@@ -1,9 +1,10 @@
+from xml.etree.ElementTree import Comment
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import Car
-from .serializers import CarSerializer
+from .models import Car, Comments
+from .serializers import CarSerializer, CommentSerializer
 
 # <<<<<<<<<<<<<<<<< EXAMPLE FOR STARTER CODE USE <<<<<<<<<<<<<<<<<
 
@@ -31,3 +32,9 @@ def user_cars(request):
         cars = Car.objects.filter(user_id=request.user.id)
         serializer = CarSerializer(cars, many=True)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def get_all_comment(request):
+    comment = Comment.objects.all()
+    serializer = CommentSerializer(comment, many=True)
+    return Response(serializer.data)
