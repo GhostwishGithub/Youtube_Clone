@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -26,3 +27,21 @@ def get_and_post(request):
         comment = Comment.objects.all(user=request.user)
         serializer = CommentSerializer(comment, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([IsAuthenticated])
+def get_put_delete(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if request.method == 'GET':
+        comment = Comment.objects.all(user=request.user)
+        serializer = CommentSerializer(comment, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    elif request.method == 'PUT':
+        serializer = CommentSerializer(comment, data = request.data)
+        if serializer.is_valid(raise_exception = True):
+            serializer.save(user=request.user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status = status.HTTP_204_NO_CONTENT)
