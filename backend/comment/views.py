@@ -9,10 +9,13 @@ from .serializers import CommentSerializer
 # Create your views here.
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def get_all_comment(request):
     comment = Comment.objects.all()
     serializer = CommentSerializer(comment, many=True)
-    return Response(serializer.data)
+    print(request)
+    return Response(serializer.data, status=status.HTTP_401_UNAUTHORIZED)
+    
 
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
