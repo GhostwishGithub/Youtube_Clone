@@ -51,6 +51,7 @@ def get_and_post(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'GET':
-        comment = Comment.objects.all()
-        #we are currently working here
-        #ORM QUerrying from Day 16 uses foreign keys
+        comment = Comment.objects.all(user=request.user)
+        serializer = CommentSerializer(comment, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
