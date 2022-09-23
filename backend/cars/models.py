@@ -12,14 +12,14 @@ class Car(models.Model):
     model = models.CharField(max_length=100)
     year = models.IntegerField()
 
-class Comment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    video_id = models.CharField(max_length=255)
-    text = models.CharField(max_length=255)
-    likes = models.IntegerField()
-    diskikes = models.IntegerField()
+# class Comment(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     video_id = models.CharField(max_length=255)
+#     text = models.CharField(max_length=255)
+#     likes = models.IntegerField()
+#     diskikes = models.IntegerField()
 
-class Reply(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    comment= models.ForeignKey(max_length=255)
-    text = models.CharField(max_length=255)
+# class Reply(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     comment= models.ForeignKey(Comment, max_length=255)
+#     text = models.CharField(max_length=255)
