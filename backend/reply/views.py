@@ -3,8 +3,8 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
-from .models import Comment, Reply
-from .serializers import CommentSerializer, ReplySerializer
+from .models import Reply
+from .serializers import ReplySerializer
 
 # Create your views here.
 
@@ -12,7 +12,7 @@ from .serializers import CommentSerializer, ReplySerializer
 @permission_classes([AllowAny])
 def reply_all(request):
     reply = Reply.objects.all()
-    serializer = CommentSerializer(reply, many=True)
+    serializer = ReplySerializer(reply, many=True)
     return Response(serializer.data)
 
 @api_view(['GET', 'POST'])
@@ -35,7 +35,7 @@ def get_reply_or_delete(request, pk):
     reply = get_object_or_404(Reply, pk=pk)
     if request.method == 'GET':
         reply = Reply.objects.all(user=request.user)
-        serializer = CommentSerializer(reply, many=True)
+        serializer = ReplySerializer(reply, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     elif request.method == 'PUT':
         serializer = ReplySerializer(reply, data = request.data)
