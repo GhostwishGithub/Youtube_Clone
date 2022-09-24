@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     # 'cars.apps.CarsConfig'  # This app is for example use only
     'comment',
     'reply',
-
-
+    'drf_jwt_backend'
 ]
 
 MIDDLEWARE = [
@@ -157,6 +156,6 @@ SIMPLE_JWT = {
 }
 
 try:
-    from drf_jwt_backend.local_setting import *
+    from drf_jwt_backend.local_settings import *
 except ImportError:
     pass
