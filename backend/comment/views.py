@@ -14,7 +14,7 @@ def get_all_comment(request):
     comment = Comment.objects.all()
     serializer = CommentSerializer(comment, many=True)
     print(request)
-    return Response(serializer.data, status=status.HTTP_401_UNAUTHORIZED)
+    return Response(serializer.data, status=status.HTTP_200_OK)
     
 
 @api_view(['GET', 'POST'])
