@@ -6,6 +6,9 @@ import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
+import VideoPage from "./pages/VideoPage/VideoPage";
+
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -24,11 +27,16 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage />
+              <SearchPage />
+              <VideoPage />
             </PrivateRoute>
           }
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/video" element={<VideoPage />} />
       </Routes>
       <Footer />
     </div>
