@@ -27,16 +27,14 @@ function App() {
           element={
             <PrivateRoute>
               <HomePage />
-              <SearchPage />
-              <VideoPage />
             </PrivateRoute>
           }
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/video" element={<VideoPage />} />
+        <Route path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute>} />
+        <Route path="/video" element={<PrivateRoute><VideoPage /></PrivateRoute>} />
       </Routes>
       <Footer />
     </div>
