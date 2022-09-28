@@ -21,6 +21,12 @@ const SearchPage = () => {
   
     return (
       <div className="container">
+            <div>
+              <input type="text" onClick={SearchPage} onChange={(selection)=>console.log(selection.target.value)} className="searchTerm" placeholder="SEARCH"></input>
+              <button type='submit' className="searchButton">
+              <i className="fa-fa search">search</i>
+              </button>
+            </div>
             <iframe
             id="YouTube Clone"
             type="text/html"
