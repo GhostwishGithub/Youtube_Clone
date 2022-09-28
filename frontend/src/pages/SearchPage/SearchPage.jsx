@@ -2,34 +2,44 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
+import DisplaySearchResults from "./DisplaySearchResults";
 
 const SearchPage = () => {
     const [searchedVids, setSearchedVids] = useState([]);
+    const [seachInput,setSearchInput] = useState("")
     const [user, token] = useAuth();
     useEffect(() => {
-      const fetchSearchVids = async () => {
-        try {
-          let response = await axios.get("https://www.googleapis.com/youtube/v3/search?q=Bob Ross&key=AIzaSyDDOWllblIFuS0NimgmZ9Yd7g859jc12Ek&part=snippet");
-          console.log("RESPONSE COMING FROM SEARCHVIDEOS ",response)
-          setSearchedVids(response.data.items);
-        } catch (error) {
-          console.log(error.response.data.items[0].id);
-        }
-      };
-      fetchSearchVids();
+      
+  
     }, [token]);
+
+    async function handleSubmit(event){
+      //prevents default behavior of a form submission. (a page refresh)
+      event.preventDefault()
+      debugger
+      console.log(seachInput)
+      try {
+        let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${seachInput}&key=AIzaSyDDOWllblIFuS0NimgmZ9Yd7g859jc12Ek&part=snippet`);
+        console.log(response.data.items)
+        //Below line give "searchedVids" the value of all videos searched
+        setSearchedVids(response.data.items);
+        //Take the results of this request (stored in searchedVids)
+        //and pass it down to Display SearchResults as props.
+      } catch (error) {
+        console.log(error.response.data.items[0].id);
+      }
+    }
+
   
     return (
       <div className="container">
-            <div>             
-              <input type="text"  className="searchTerm" placeholder="SEARCH"></input>
-              <button type='submit' onClick={fetch} onChange={(selection)=>console.log(selection.target.value)} className="searchButton">
+            <form onSubmit={handleSubmit}>             
+              <input type="text"  className="searchTerm" onChange={(event)=>setSearchInput(event.target.value)} placeholder="SEARCH"></input>
+              <button type='submit' className="searchButton">
               <i className="fa-fa search">search</i>
               </button>
-              searchButton.addEventListener('click', () =>{
-                alert('searchButton Clicked')
-              })
-            </div>
+             
+            </form>
             <iframe
             id="YouTube Clone"
             type="text/html"
@@ -39,6 +49,8 @@ const SearchPage = () => {
             src ={'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com'}
             frameborder="0"
             ></iframe>
+
+            <DisplaySearchResults searchedVids={searchedVids}/>
       </div>
     );
   };
