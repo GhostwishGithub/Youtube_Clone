@@ -24,7 +24,7 @@ const SearchPage = () => {
           searchedVids.map((user) => (
             <p key={searchedVids.id}>
               {searchedVids.video_id} {searchedVids.name} {searchedVids.title}
-              { <img src = {'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com'}/> }
+              { <img src ='https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com' alt="Demo Page"/> }
             </p>
           ))}
       </div>
