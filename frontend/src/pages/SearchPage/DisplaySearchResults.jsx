@@ -6,10 +6,20 @@ import React, { useEffect, useState } from 'react';
     //Take the videos passed down from SearchPage. Done! props.searchedVids
     //Map through the videos and display the thumbnail using an <img/> tag
     //When clicked (onClick), pass the id of the video to a function called handleSubmit.
-    return <div>
-        {console.log("Searched Videos inside of DisplaySearchResults: ", props.searchedVids)}
-        <h3>This is where the search results will be displayed</h3>
-    </div>
+
+    return (
+        <div>
+            {props.searchedVids.map((element) => {
+                return (
+                    <img src={element.artworkUrl100} onClick={() => DisplaySearchResults(element)} />
+                );
+            })}
+        </div>
+    );
+    //<div>
+      //  {console.log("Searched Videos inside of DisplaySearchResults: ", props.searchedVids)}
+       // <h3>This is where the search results will be displayed</h3>
+    //</div>
  }
  const DisplayPage = () => {
     const [videoSearch, setVideoSerach] = useState([]);
