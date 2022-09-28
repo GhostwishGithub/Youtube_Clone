@@ -20,12 +20,11 @@ const SearchPage = () => {
     }, [token]);
     return (
       <div className="container">
-        <h1>Search Page for {user.searchedVids}!</h1>
         {searchedVids &&
           searchedVids.map((user) => (
             <p key={searchedVids.id}>
               {searchedVids.video_id} {searchedVids.name} {searchedVids.title}
-              {/* <img src = {}/> */}
+              { <img src = {'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com'}/> }
             </p>
           ))}
       </div>
