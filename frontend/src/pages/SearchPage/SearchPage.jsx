@@ -16,7 +16,6 @@ const SearchPage = () => {
     async function handleSubmit(event){
       //prevents default behavior of a form submission. (a page refresh)
       event.preventDefault()
-      debugger
       console.log(seachInput)
       try {
         let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${seachInput}&key=AIzaSyDDOWllblIFuS0NimgmZ9Yd7g859jc12Ek&part=snippet`);
