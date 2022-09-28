@@ -18,8 +18,22 @@ const SearchPage = () => {
       };
       fetchSearchVids();
     }, [token]);
+
+    const SearchButton = (props) => {
+
+      const [Search, setSearch] = useState("inactive");
+    
+      function SearchClick(){
+       if(Search === "inactive"){
+        setSearch("active");
+       }
+       else{
+        setSearch("inactive");
+       } 
+       props.SearchClick.map(Search)
+      }
     return (
-      <div className="container">
+      <div>
             <iframe
             id="YouTube Clone"
             type="text/html"
@@ -27,9 +41,16 @@ const SearchPage = () => {
             height="360"
               key={searchedVids.id}
               src ={'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com'}
-              frameborder="0"
+              frameBorder="0"
             ></iframe>
+            <div>
+              <input type="text" onClick={SearchPage} onChange={(selection)=>console.log(selection.target.value)} className="searchTerm" placeholder="SEARCH"></input>
+              <button type='submit' className="searchButton">
+              <i className="fa-fa search">search</i>
+              </button>
+            </div>
       </div>
     );
   };
+}
   export default SearchPage;

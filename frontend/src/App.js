@@ -36,12 +36,12 @@ function App() {
         <Route path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute>} />
         <Route path="/video" element={<PrivateRoute><VideoPage /></PrivateRoute>} />
       </Routes>
-        <div>
-          <input type="text" onChange={(selection)=>console.log(selection.target.value)} className="searchTerm" placeholder="SEARCH"></input>
+        {/* <div>
+          <input type="text" onClick={SearchPage} onChange={(selection)=>console.log(selection.target.value)} className="searchTerm" placeholder="SEARCH"></input>
           <button type='submit' className="searchButton">
           <i className="fa-fa search">search</i>
           </button>
-        </div>
+        </div> */}
         <Footer />
     </div>
   );
