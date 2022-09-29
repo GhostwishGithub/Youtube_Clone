@@ -16,8 +16,18 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import { useState } from "react";
 
 function App() {
+
+  const [entries, setEntries] = useState ([])
+
+  function quickPass(entry){
+
+  let newPasses = [entry, ...entries];
+
+  setEntries(newPasses);
+  }
   return (
     <div>
       <Navbar />
@@ -29,15 +39,15 @@ function App() {
               <HomePage />
             </PrivateRoute>
           }
-        />
+          />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/search" element={<PrivateRoute><SearchPage /></PrivateRoute>} />
+        <Route path="/search" element={<PrivateRoute><SearchPage SearchPageProperty={quickPass}/></PrivateRoute>} />
         <Route path="/video" element={<PrivateRoute><VideoPage /></PrivateRoute>} />
       </Routes>
-        
         <Footer />
+          
     </div>
   );
 }

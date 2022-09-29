@@ -2,37 +2,30 @@ import { useEffect, useState } from "react";
 import DisplaySearchResults from "../SearchPage/DisplaySearchResults";
 import SearchPage from "../SearchPage/SearchPage";
 
-const VideoPage = (props) => {
-    const [videoId, setVideoId] = useState([]);
-    
-    useEffect(() => {
+ const VideoPage = () => {
+ 
+     const [videoId, setVideoId] = useState([]);
+     
         
-    }, []);
-    
-        console.log("Video Page", videoId);
-    };
-    async function handleSubmit(event) {
-        event.preventDefault()
-        let SearchResult = {            
-            videoId: videoId,
+      useEffect(() => {
+          console.log("Video Page", videoId.data);
+             }, []);
+         setVideoId()
+     };
+     async function handleSubmit(event) {
+         event.preventDefault()
+         let SearchResult = {            
+             videoId: videoId,
        
-        };       
+         };       
      
     return (
-        <form onSubmit={handleSubmit}>
-            <iframe
-                id="YouTube Clone"
-                type="text/html"
-                width="640"
-                height="360"
-                key={VideoPage}
-                src ={"https://i.ytimg.com/vi/_caMQpiwiaU/default.jpg"}
-                frameborder="0"
+        <div>
+            <iframe id="ytplayer" type="text/html" width="640" height="360"
+            src="https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+            frameborder="0"
             ></iframe>
-
-        {<VideoPage SearchPage={SearchPage}/> }
-        {<DisplaySearchResults SearchPage={SearchPage}/> }
-        </form>
+         </div>
     );
     } 
 export default VideoPage;

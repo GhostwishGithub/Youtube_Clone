@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 import DisplaySearchResults from "./DisplaySearchResults";
 
-const SearchPage = () => {
+const SearchPage = (props) => {
     const [searchedVids, setSearchedVids] = useState([]);
     const [seachInput,setSearchInput] = useState("")
     const [user, token] = useAuth();
@@ -15,8 +15,10 @@ const SearchPage = () => {
 
     async function handleSubmit(event){
       //prevents default behavior of a form submission. (a page refresh)
-      event.preventDefault()
+      event.preventDefault()  
+      let newSearch;
       console.log(seachInput)
+      props.SearchPageProperty(newSearch)
       try {
         let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${seachInput}&key=AIzaSyDDOWllblIFuS0NimgmZ9Yd7g859jc12Ek&part=snippet`);
         console.log(response.data.items)
@@ -39,15 +41,6 @@ const SearchPage = () => {
               </button>
              
             </form>
-            <iframe
-            id="YouTube Clone"
-            type="text/html"
-            width="640"
-            height="360"
-            key={searchedVids.id}
-            src ={'https://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com'}
-            frameborder="0"
-            ></iframe>
 
             <DisplaySearchResults searchedVids={searchedVids}/>
       </div>

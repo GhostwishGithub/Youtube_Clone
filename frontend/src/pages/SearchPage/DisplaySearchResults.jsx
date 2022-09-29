@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+
 
 
  export default function DisplaySearchResults(props){
@@ -9,6 +8,8 @@ import React, { useEffect, useState } from 'react';
     function handleClick(video){
         debugger
         console.log(video)
+        let videoId = video.id.videoId
+        
     }
 
     return (
