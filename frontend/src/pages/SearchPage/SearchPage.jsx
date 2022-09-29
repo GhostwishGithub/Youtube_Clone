@@ -10,7 +10,7 @@ const SearchPage = () => {
     const [user, token] = useAuth();
     useEffect(() => {
       
-  
+  console.log("Search Page")
     }, [token]);
 
     async function handleSubmit(event){

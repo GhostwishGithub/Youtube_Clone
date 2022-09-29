@@ -3,7 +3,7 @@ import SearchPage from "../SearchPage/SearchPage";
 
 
 
-const DisplaySearchResults = () => {
+const VideoPage = () => {
 return(
 <div>
  <iframe
@@ -16,7 +16,8 @@ return(
  frameborder="0"
  ></iframe>
 
- <VideoPage SearchPage={SearchPage}/>
+ {/* <VideoPage SearchPage={SearchPage}/> */}
+ 
  </div>
 )
 };
