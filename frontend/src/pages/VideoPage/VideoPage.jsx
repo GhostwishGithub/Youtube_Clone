@@ -1,24 +1,23 @@
-import { useEffect, useState } from "react";
-import DisplaySearchResults from "../SearchPage/DisplaySearchResults";
-import SearchPage from "../SearchPage/SearchPage";
 
- const VideoPage = () => {
+import React, { useState, useEffect } from 'react';
+
+
+
+ const VideoPage = (props) => {
  
      const [videoId, setVideoId] = useState([]);
      
         
       useEffect(() => {
-          console.log("Video Page", videoId.data);
-             }, []);
-         setVideoId()
-     };
-     async function handleSubmit(event) {
-         event.preventDefault()
-         let SearchResult = {            
-             videoId: videoId,
-       
-         };       
-     
+        // async function handleSubmit(event) {
+        //     event.preventDefault();
+            
+            let SearchResult = props.parentEntries.map(entry => {
+            return [entry, entry.videoId];
+            });
+            setVideoId(SearchResult);
+        }, [props.parentEntries]);
+        
     return (
         <div>
             <iframe id="ytplayer" type="text/html" width="640" height="360"
@@ -27,5 +26,6 @@ import SearchPage from "../SearchPage/SearchPage";
             ></iframe>
          </div>
     );
-    } 
-export default VideoPage;
+ }
+    
+    export default VideoPage;

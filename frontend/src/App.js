@@ -44,7 +44,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/search" element={<PrivateRoute><SearchPage SearchPageProperty={quickPass}/></PrivateRoute>} />
-        <Route path="/video" element={<PrivateRoute><VideoPage /></PrivateRoute>} />
+        <Route path="/video" element={<PrivateRoute><VideoPage parentEntries={entries}/></PrivateRoute>} />
       </Routes>
         <Footer />
           
