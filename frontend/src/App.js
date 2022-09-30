@@ -40,7 +40,7 @@ function App() {
             </PrivateRoute>
           }
           />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/register" element={<RegisterPage RegisterPageProperties={entries}/>} />
         <Route path="/login" element={<LoginPage LoginPageProperties={entries}/>} />
         <Route path="/home" element={<HomePage HomePageProperties={entries}/>} />
         <Route path="/search" element={<PrivateRoute><SearchPage SearchPageProperty={quickPass}/></PrivateRoute>} />

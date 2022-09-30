@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import useCustomForm from "../../hooks/useCustomForm";
 
-const RegisterPage = () => {
+const RegisterPage = (props) => {
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
     username: "",
@@ -15,6 +15,7 @@ const RegisterPage = () => {
     defaultValues,
     registerUser
   );
+  props.RegisterPageProperties(registerUser)
 
   return (
     <div className="container">
