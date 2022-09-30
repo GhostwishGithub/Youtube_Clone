@@ -4,7 +4,7 @@ import useCustomForm from "../../hooks/useCustomForm";
 import { Link } from "react-router-dom";
 import "./LoginPage.css";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const { loginUser, isServerError } = useContext(AuthContext);
   const defaultValues = { username: "", password: "" };
   const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(
@@ -17,6 +17,7 @@ const LoginPage = () => {
       reset();
     }
   }, [isServerError]);
+    props.LoginPageProperties(loginUser)
 
   return (
     <div className="container">

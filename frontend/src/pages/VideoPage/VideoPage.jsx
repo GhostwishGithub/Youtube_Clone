@@ -13,7 +13,7 @@ import React, { useState, useEffect } from 'react';
         //     event.preventDefault();
             
             let SearchResult = props.parentEntries.map(entry => {
-            return [entry, entry.videoId];
+            return [entry, ...entry.videoId];
             });
             setVideoId(SearchResult);
         }, [props.parentEntries]);
