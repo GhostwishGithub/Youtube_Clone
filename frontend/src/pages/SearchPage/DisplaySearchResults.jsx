@@ -6,17 +6,16 @@
     //Map through the videos and display the thumbnail using an <img/> tag
     //When clicked (onClick), pass the id of the video to a function called handleSubmit.
     function handleClick(video){
-        debugger
         console.log(video)
         let videoId = video.id.videoId
-        
+        console.log(videoId)
     }
 
     return (
         <div>
             {props.searchedVids.map((element) => {
                 return (
-                    <img src={element.snippet.thumbnails.default.url} onClick={() => handleClick(element)} />
+                    <img src={element.snippet.thumbnails.default.url} alt="Error" onClick={() => handleClick(element)} />
                 );
             })}
         </div>

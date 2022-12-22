@@ -16,7 +16,7 @@ const LoginPage = (props) => {
     if (isServerError) {
       reset();
     }
-  }, [isServerError]);
+  }, [isServerError, reset]);
     props.LoginPageProperties(loginUser)
 
   return (
