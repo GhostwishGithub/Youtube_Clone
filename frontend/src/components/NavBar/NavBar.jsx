@@ -11,8 +11,8 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Django JWT</b>
+          <Link to="/" style={{ textDecoration: "overline underline", textDecorationStyle: "wavy", textDecorationColor: "red", color: "black" }}>
+            <b>BMT Video Player</b>
           </Link>
           <Link to='/search'>
             <>Search Page</>
